@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -27,14 +28,14 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Home</a>
+                <Link to="/" >Home</Link>
               </li>
 
               <li>
-                <a>All Toys</a>
+                <Link to="/alltoys">All Toys</Link>
               </li>
               <li>
-                <a>Blogs</a>
+                <Link to="/blog">Blogs</Link>
               </li>
             </ul>
           </div>
@@ -49,21 +50,24 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+            <Link to="/" >Home</Link>
             </li>
             <li>
-              <a>All Toys</a>
+              <Link to="/alltoys">All Toys</Link>
             </li>
             <li>
-              <a>Blogs</a>
+              <Link to="/blog">Blogs</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
+          <div className="flex justify-center items-center gap-3">
+          <button className="btn btn-accent"> <Link to="/login">Login</Link></button>
           <div className="avatar">
             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src="https://i.ibb.co/qNRBJjc/avatar-user.png" />
             </div>
+          </div>
           </div>
         </div>
       </div>
