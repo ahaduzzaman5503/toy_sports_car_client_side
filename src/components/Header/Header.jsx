@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { users, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    console.log('logout');
+    logOut()
+  }
   return (
     <div className="container mx-auto">
       <div className="navbar bg-primary text-primary-content rounded shadow-lg">
@@ -28,7 +35,7 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/" >Home</Link>
+                <Link to="/">Home</Link>
               </li>
 
               <li>
@@ -39,18 +46,24 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Toy Sports Car</a>
-          <img
-            className="w-8"
-            src="https://i.ibb.co/DMhpSK3/toy-car-logo.png"
-            alt="toy-car-logo"
-            border="0"
-          />
+          <a className="btn btn-ghost normal-case text-xl">
+            <Link to="/">Toy Sports Car</Link>
+          </a>
+         <a>
+         <Link to="/">
+            <img
+              className="w-8"
+              src="https://i.ibb.co/DMhpSK3/toy-car-logo.png"
+              alt="toy-car-logo"
+              border="0"
+            />
+          </Link>
+         </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-            <Link to="/" >Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/alltoys">All Toys</Link>
@@ -62,12 +75,26 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <div className="flex justify-center items-center gap-3">
-          <button className="btn btn-accent"> <Link to="/login">Login</Link></button>
-          <div className="avatar">
-            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="https://i.ibb.co/qNRBJjc/avatar-user.png" />
-            </div>
-          </div>
+            
+            {
+              users?
+              <>
+              <button onClick={handleLogout}>SignOut</button>
+              <div className="avatar">
+              <div title={users.displayName} className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={users.photoURL} />
+              </div>
+              </div>
+              </>
+              
+              : 
+            
+            <button className="btn btn-accent">
+              {" "}
+              <Link to="/login">Login</Link>
+            </button>
+            }
+
           </div>
         </div>
       </div>

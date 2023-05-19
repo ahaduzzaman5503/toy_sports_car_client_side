@@ -1,25 +1,28 @@
 import React from "react";
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="container mx-auto mt-5">
       <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
-          <img
+      <Link to='/'>
+      <img
             className="w-32"
             src="https://i.ibb.co/DMhpSK3/toy-car-logo.png"
             alt="toy-car-logo"
             border="0"
           />
-          <a className="btn btn-ghost normal-case text-xl">Toy Sports Car</a>
+      </Link>
+          <a className="btn btn-ghost normal-case text-xl"><Link to="/">Toy Sports Car</Link></a>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <a className="link link-hover">Home</a>
+          <Link to='/' className="link link-hover">Home</Link>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Blogs</a>
+          <Link to='/blog' className="link link-hover">Blogs</Link>
         </div>
         <div>
           <span className="footer-title">contact information</span>
