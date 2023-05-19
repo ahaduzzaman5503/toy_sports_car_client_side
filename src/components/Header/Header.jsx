@@ -6,9 +6,9 @@ const Header = () => {
   const { users, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
-    console.log('logout');
-    logOut()
-  }
+    console.log("logout");
+    logOut();
+  };
   return (
     <div className="container mx-auto">
       <div className="navbar bg-primary text-primary-content rounded shadow-lg">
@@ -44,21 +44,27 @@ const Header = () => {
               <li>
                 <Link to="/blog">Blogs</Link>
               </li>
+              <li>
+                <Link to="/addtoy">Add Toy</Link>
+              </li>
+              <li>
+                <Link to="/mytoy">My Toy</Link>
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
             <Link to="/">Toy Sports Car</Link>
           </a>
-         <a>
-         <Link to="/">
-            <img
-              className="w-8"
-              src="https://i.ibb.co/DMhpSK3/toy-car-logo.png"
-              alt="toy-car-logo"
-              border="0"
-            />
-          </Link>
-         </a>
+          <a>
+            <Link to="/">
+              <img
+                className="w-8"
+                src="https://i.ibb.co/DMhpSK3/toy-car-logo.png"
+                alt="toy-car-logo"
+                border="0"
+              />
+            </Link>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -71,30 +77,40 @@ const Header = () => {
             <li>
               <Link to="/blog">Blogs</Link>
             </li>
+            {users ? (
+              <>
+                <li>
+                  <Link to="/addtoy">Add Toy</Link>
+                </li>
+                <li>
+                  <Link to="/mytoy">My Toy</Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
           <div className="flex justify-center items-center gap-3">
-            
-            {
-              users?
+            {users ? (
               <>
-              <button onClick={handleLogout}>SignOut</button>
-              <div className="avatar">
-              <div title={users.displayName} className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={users.photoURL} />
-              </div>
-              </div>
+                <button onClick={handleLogout}>SignOut</button>
+                <div className="avatar">
+                  <div
+                    title={users.displayName}
+                    className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+                  >
+                    <img src={users.photoURL} />
+                  </div>
+                </div>
               </>
-              
-              : 
-            
-            <button className="btn btn-accent">
-              {" "}
-              <Link to="/login">Login</Link>
-            </button>
-            }
-
+            ) : (
+              <button className="btn btn-accent">
+                {" "}
+                <Link to="/login">Login</Link>
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -54,6 +54,7 @@ const Login = () => {
         event.target.reset();
         setSuccess("User Login Successfully");
         navigate(from)
+        from.reset()
       })
       .catch((error) => {
         setError(error.message);
