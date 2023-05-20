@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
   const toycars = useLoaderData();
@@ -10,7 +10,7 @@ const AllToys = () => {
   const filteredToycars = toycars.filter(toycar =>
     toycar.toyname.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
+
   const slicedToycars = filteredToycars.slice(0, limit);
 
   const handleSearchQuery = event => {
@@ -35,6 +35,7 @@ const AllToys = () => {
           {/* head */}
           <thead>
             <tr>
+              <th>S/L</th>
               <th>Seller</th>
               <th>Toy Name</th>
               <th>Sub Category</th>
@@ -46,19 +47,20 @@ const AllToys = () => {
           <tbody>
             {slicedToycars.map((toycar, index) => (
               <tr key={index}>
-                <td>
+                <td className="border">{toycar.id}</td>
+                <td className="border">
                   <div className="flex items-center space-x-3">
                     <div>
                       <div className="font-bold">{toycar.seller}</div>
                     </div>
                   </div>
                 </td>
-                <td>{toycar.toyname}</td>
-                <td>{toycar.subcategory}</td>
-                <td>{toycar.price}</td>
-                <td>{toycar.availablequantity}</td>
-                <td>
-                  <button className="btn btn-ghost btn-xs">View Details</button>
+                <td className="border">{toycar.toyname}</td>
+                <td className="border">{toycar.subcategory}</td>
+                <td className="border">{toycar.price}</td>
+                <td className="border">{toycar.availablequantity}</td>
+                <td className="border">
+                  <button className="btn btn-light btn-xs"><Link to={`/toy/${toycar.id}`}>View Details</Link></button>
                 </td>
               </tr>
             ))}
