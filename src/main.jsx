@@ -31,12 +31,12 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch('https://toy-sports-car-server-ahaduzzaman5503.vercel.app/toy')
+        loader: () => fetch('https://toy-sports-car-server.vercel.app/toy')
       },
       {
         path: "/toy/:id",
         element:<PrivateRoute><ToysDetails></ToysDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`https://toy-sports-car-server-ahaduzzaman5503.vercel.app/toy/${params.id}`)
+        loader: ({params}) => fetch(`https://toy-sports-car-server.vercel.app/toy/${params.id}`)
       },
       {
         path: "/blog",
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: "/mytoy",
         element: <PrivateRoute><MyToy></MyToy></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/toycardata')
+        loader: () => fetch('https://toy-sports-car-server.vercel.app/toycardata')
       }
     ],
   },

@@ -3,6 +3,10 @@ import { useLoaderData } from "react-router-dom";
 
 const MyToy = () => {
   const newtoy = useLoaderData();
+
+  const handleDeleteToy = _id => {
+    console.log('delete ', _id);
+  }
   return (
     <div className="container mx-auto">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -63,6 +67,7 @@ const MyToy = () => {
                 </td>
                 <td className="px-6 py-4">
                   <a
+                  onClick={() => handleDeleteToy(newtoy._id)}
                     href="#"
                     className="font-medium text-red-600 dark:text-red-500 hover:underline"
                   >
