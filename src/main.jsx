@@ -31,12 +31,12 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch('http://localhost:5000/toy')
+        loader: () => fetch('https://toy-sports-car-server-ahaduzzaman5503.vercel.app/toy')
       },
       {
         path: "/toy/:id",
         element:<PrivateRoute><ToysDetails></ToysDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+        loader: ({params}) => fetch(`https://toy-sports-car-server-ahaduzzaman5503.vercel.app/toy/${params.id}`)
       },
       {
         path: "/blog",
